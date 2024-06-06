@@ -1,0 +1,30 @@
+menu "FinNAV Memory&Flash Configuration"
+
+config CONFIG_EXSBOOT
+    bool "compile for External Storage Bootloader support"
+    default n
+
+config CONFIG_RAM_BASED
+    bool "compile for target loaded into RAM"
+    default n
+
+config CONFIG_CUSTOM_DEFAULTS_EXTENDED
+    bool "reserve space for custom defaults"
+    default n
+
+config CONFIG_MCU_FLASH_SIZE
+    int "SoC Flash Size in KBytes"
+    default 512
+
+config CONFIG_BOOTLOADER_BASE_ADDRESS
+    hex "Bootloader Base Address"
+    default 0x08000000
+
+config CONFIG_MULTIBOOT_MEM_ADDR
+    hex "MultiBoot Bootloader Memory Address"
+    default 0x08100000
+
+
+endmenu
+
+# *** included ***

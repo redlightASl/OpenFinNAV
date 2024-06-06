@@ -1,0 +1,40 @@
+# Darwin
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.uvopt
+*.uvoptx*
+*.uvguix*
+.cortex-debug*
+*.project
+
+# binary
+*.bin
+*.hex
+*.axf
+*.elf
+*.o
+*.a
+*.obj
+*.lib
+
+# depends
+*.d
+
+# info
+*.map
+*.pdb
+*.exp
+*.bak
+*.swp
+*.save
+__pycache__
+*.pyc
+
+# Doxygen
+DoxygenOut/
+
+# Make
+.last_conf

@@ -1,0 +1,75 @@
+menu "Basic Components Configuration"
+	config LIBROV_USE_ASSERT
+		bool "Use Assert Function"
+		default y
+
+	config LIBROV_USE_PANIC
+		bool "Use Forced Pancic Function"
+		default y
+
+	config LIBROV_PRINT_ALL_LOGS
+		bool "Print All Information Logs"
+		default n
+
+	config LIBROV_USE_STDBOOL
+		bool "Use <stdbool.h> as Standard Boolean"
+		default y
+
+	choice
+		prompt "Select Cabin Function"
+		default LIBROV_STANDALONE
+
+		config LIBROV_POWER_CABIN
+			bool "Power Cabin"
+		config LIBROV_CTRL_CABIN
+			bool "Control Cabin"
+		config LIBROV_COMM_CABIN
+			bool "Communication Cabin"
+		config LIBROV_MAIN_CABIN
+			bool "Main Cabin"
+		config LIBROV_STANDALONE
+			bool "Standalone Project with FinNAV"
+	endchoice
+endmenu
+
+
+menu "Thruster Configuration"
+	choice
+		prompt "The Number of Horizental Thrusters"
+		depends on !LIBROV_STANDALONE
+		default AXIS_4_HORIZENTAL
+		help
+			Number of horizental thrusters, according to your UUV
+
+		config AXIS_2_HORIZENTAL
+			bool "2-axis horizental thruster"
+		config AXIS_4_HORIZENTAL
+			bool "4-axis horizental thruster"
+	endchoice
+
+	choice
+		prompt "The Number of Vertical Thrusters"
+		depends on !LIBROV_STANDALONE
+		default AXIS_2_VERTICAL
+		help
+			Number of vertical thrusters, according to your UUV
+
+		config AXIS_1_VERTICAL
+			bool "1-axis vertical thruster"
+		config AXIS_2_VERTICAL
+			bool "2-axis vertical thruster"
+		config AXIS_3_VERTICAL
+			bool "3-axis vertical thruster"
+		config AXIS_4_VERTICAL
+			bool "4-axis vertical thruster"
+	endchoice
+
+	config PWM_DEFAULT_VALUE
+		int "The PWM value for Thruster Middle Position(Default Value)"
+		range 0 65535
+		depends on !LIBROV_STANDALONE
+		default 1480
+		help
+			Default PWM value for your ESC of thruster.
+
+endmenu

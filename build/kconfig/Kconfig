@@ -1,0 +1,31 @@
+mainmenu "FinNAV SDK Global Configuration"
+
+config CONFIG_TARGET_APP
+	string "Target Application name"
+	default "f407_finnav"
+
+## FinNAV Toolchain Configuration ##
+source "$(FINNAV_BUILD_DIR)/kconfig/Kconfig.toolchain"
+## FinNAV BSP Configuration ##
+source "$(FINNAV_BUILD_DIR)/kconfig/Kconfig.bsp"
+## FinNAV RTOS Kernel Configuration ##
+source "$(FINNAV_BUILD_DIR)/kconfig/Kconfig.rtos"
+
+## FreeRTOS Configuration ##
+source "$(FINNAV_BUILD_DIR)/kconfig/Kconfig.freertos"
+## RT-Thread Configuration ##
+source "$(FINNAV_BUILD_DIR)/kconfig/Kconfig.rtthread"
+## LiteOS Configuration ##
+# TODO LiteOS Kconfig
+
+## FinNAV Memory&Flash Configuration ##
+source "$(FINNAV_BUILD_DIR)/kconfig/Kconfig.memory"
+
+## FinNAV LibROV Configuration ##
+menuconfig CONFIG_USE_FINNAV
+	bool "Use FinNAV LibROV"
+	default y
+if CONFIG_USE_FINNAV
+	source "$(FINNAV_LIBROV_DIR)/Kconfig.main"
+endif
+# *** EOF ***

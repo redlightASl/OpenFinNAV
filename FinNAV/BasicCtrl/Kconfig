@@ -1,0 +1,79 @@
+menu "Route Configuration"
+
+menu "Protocol Configuration"
+## Link Protocol Selection ##
+choice
+	prompt "Use RovLink or Lagency"
+	default LIBROV_USE_ROVLINK
+
+	config LIBROV_USE_ROVLINK
+		bool "Use RovLink for control and communication"
+	config USE_LAGENCY
+		bool "Support Lagency DataFrames"
+	config USE_USER_PROTOCOL
+		bool "User defined Protocol"
+endchoice
+
+## LIBROV_USE_ROVLINK ##
+choice
+	prompt "Identify Algorithm"
+	default ROVLINK_IDENTIFY_ALG_NO
+
+	config ROVLINK_IDENTIFY_ALG_CRC
+		bool "CRC Algorithm"
+		depends on LIBROV_ENABLE_CRC8_SOFTWARE || LIBROV_ENABLE_CRC8_HARDWARE
+		help
+			Review Algorithm-Enable CRC8 Encoder/Decoder to check use CRC in which way
+	config ROVLINK_IDENTIFY_ALG_SUM
+		bool "Sum-check Algorithm"
+		depends on LIBROV_ENABLE_SUMCHECK
+	config ROVLINK_IDENTIFY_ALG_PARITY
+		bool "Parity-check Algorithm"
+		depends on LIBROV_ENABLE_PARITY
+	config ROVLINK_IDENTIFY_ALG_ODD
+		bool "Odd-check Algorithm"
+		depends on LIBROV_ENABLE_ODD
+	config ROVLINK_IDENTIFY_ALG_NO
+		bool "Not Use Check Algorithm"
+endchoice
+
+choice
+	prompt "Select Software CRC or Hardware CRC"
+	depends on ROVLINK_IDENTIFY_ALG_CRC
+	default ROVLINK_CRC_SOFTWARE_BW
+
+	config ROVLINK_CRC_SOFTWARE_LUT
+		bool "Software CRC in Look-Up-Table"
+	config ROVLINK_CRC_SOFTWARE_BW
+		bool "Software CRC in Bit-Wise"
+	config ROVLINK_CRC_HARDWARE
+		bool "Hardware CRC"
+endchoice
+
+config ROVLINK_ENABLE_OTA
+	bool "Enable Rovlink OTA Function"
+	depends on LIBROV_USE_ROVLINK
+	default n
+
+config ROVLINK_ENABLE_PASSBY
+	bool "Enable Passby-Message UART"
+	depends on LIBROV_USE_ROVLINK
+	default n
+
+## USE_LAGENCY ##
+config LAGENCY_COMMAND_LENGTH
+	int "length of Command Frame"
+	depends on USE_LAGENCY
+	default 23
+
+config LAGENCY_REPORT_LENGTH
+	int "length of Lagency Report Frame"
+	depends on USE_LAGENCY
+	default 37
+
+endmenu
+
+
+
+endmenu
+

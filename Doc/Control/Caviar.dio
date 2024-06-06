@@ -1,0 +1,150 @@
+<mxfile host="65bd71144e">
+    <diagram id="Ph3N-ERi2VkpYBC5xvV2" name="第 1 页">
+        <mxGraphModel dx="1179" dy="678" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="61" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="580" width="1750" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="edgeStyle=none;html=1;" parent="1" source="2" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Factory&lt;br&gt;Bootloader" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="742" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;h1&gt;Caviar Bootloader&lt;/h1&gt;&lt;p&gt;基于FinNAV OTA组件的嵌入式Bootloader。所有FinNAV设备都需要通过Caviar加载进入主程序&lt;/p&gt;&lt;p&gt;Caviar是FinNAV设备上电后首先执行的代码，由写在器件ROM中的出厂固件完成加载&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="592" width="270" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="edgeStyle=none;html=1;" parent="1" source="5" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Caviar Boot" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="742" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="edgeStyle=none;html=1;" parent="1" source="7" target="22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Caviar" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="742" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;h1&gt;Golden Image&lt;/h1&gt;&lt;p&gt;该部分程序是FinNAV设备的主程序，能够完好地控制整个机器人，并允许通过RovLink进行控制&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="732" width="190" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;h1&gt;MultiBoot Image&lt;/h1&gt;&lt;p&gt;该部分程序被暂存，直到下次重启后才会由Caviar Bootloader加载到启动区域&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1750" y="737" width="230" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Caviar会被存储到默认上电执行Flash地址" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="812" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="MultiBoot Image" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="872" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Golden Image" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="822" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Caviar Bootloader" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="772" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="RAM Address" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="275" y="737" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Caviar是完整的FinNAV软件，因此可以简单控制机器人，但只能使用有限的RovLink帧" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="672" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="edgeStyle=none;html=1;" parent="1" source="22" target="24" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;rounded=0;" parent="1" source="22" target="47" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1035" y="892"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="确认&lt;br&gt;MultiBoot&lt;br&gt;Image" style="rhombus;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="980" y="732" width="110" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="edgeStyle=none;html=1;" parent="1" source="24" target="47" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="将MultiBoot Image&lt;br&gt;复制到Golden Image" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1165" y="742" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="edgeStyle=none;rounded=0;html=1;" parent="1" source="32" target="34" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="OTA请求帧" style="rhombus;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="1700" y="852" width="110" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" style="edgeStyle=none;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="34" target="46" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1920" y="962"/>
+                            <mxPoint x="1580" y="962"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="进入静默模式&lt;br&gt;接收并烧录程序&lt;br&gt;到MultiBoot Image" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1860" y="862" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" style="edgeStyle=none;rounded=0;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="38" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="500" y="1022"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="外部复位&lt;br&gt;或&lt;br&gt;重启设备" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1390" y="982" width="110" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="正常执行Golden Image" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1690" y="972" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="edgeStyle=none;rounded=0;html=1;" parent="1" source="41" target="46" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="修改设备&lt;br&gt;中断向量表&lt;br&gt;基地址" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1340" y="862" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="正常执行" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1550" y="802" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="正常" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="742" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="异常" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1090" y="862" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="edgeStyle=none;rounded=0;html=1;" parent="1" source="46" target="32" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;rounded=0;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="46" target="46" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1590" y="792" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1610" y="842"/>
+                            <mxPoint x="1550" y="842"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="59" style="edgeStyle=none;rounded=0;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="46" target="38" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1550" y="1022"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="Golden Image&lt;br&gt;Boot" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1520" y="862" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="edgeStyle=none;rounded=0;html=1;" parent="1" source="47" target="41" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="跳转到&lt;br&gt;Golden Image" style="whiteSpace=wrap;html=1;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1165" y="862" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

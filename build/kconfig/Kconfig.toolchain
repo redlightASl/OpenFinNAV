@@ -1,0 +1,71 @@
+menu "FinNAV Toolchain Configuration"
+
+choice
+    prompt "Choose Compiler"
+    default CONFIG_COMPILER_GCC
+    
+    config CONFIG_COMPILER_GCC
+        bool "GNU C Compiler(gcc)"
+    config CONFIG_COMPILER_ARMCC
+        bool "Arm C Compiler(armcc)"
+    config CONFIG_COMPILER_CUSTOM
+        bool "Customized C Compiler"
+endchoice
+
+config CONFIG_BUILTIN_TOOLCHAIN
+    bool "Use FinNAV built-in Toolchain"
+    depends on !CONFIG_COMPILER_CUSTOM
+    default y
+
+config CONFIG_COMPILE_DEBUG
+    bool "Compile for Debug"
+    depends on !CONFIG_COMPILER_CUSTOM
+    default y
+
+config CONFIG_COMPILE_OPT
+    string "Compile Optimization Level"
+    depends on !CONFIG_COMPILER_CUSTOM
+    default "-Og"
+
+config CONFIG_COMPILE_ONE_SECTION_PER_FUNC
+    bool "One ELF Section per Function"
+    depends on !CONFIG_COMPILER_CUSTOM
+    default y
+
+config CONFIG_COMPILE_NO_LIBC
+    bool "DO NOT Use Standard C Library"
+    depends on !CONFIG_COMPILER_CUSTOM
+    default n
+
+config CONFIG_CFLAGS_CUSTOM
+    bool "Use Customized CFLAGS"
+    depends on CONFIG_COMPILER_CUSTOM
+    default y
+
+config CONFIG_OPENOCD_PATH
+    string "Choose OpenOCD Path"
+    default ""
+
+config CONFIG_DEBUGGER_INTERFACE
+    string "Choose Debugger Interface"
+    default "cmsis-dap"
+
+choice
+    prompt "Choose Flash Binary Type"
+    default CONFIG_OPENOCD_FLASH_HEX
+    
+    config CONFIG_OPENOCD_FLASH_HEX
+        bool "Flash .hex file"
+    config CONFIG_OPENOCD_FLASH_ELF
+        bool "Flash .elf file"
+    config CONFIG_OPENOCD_FLASH_BIN
+        bool "Flash .bin file"
+endchoice
+
+config CONFIG_OPENOCD_FLASH_SPEED
+    int "Flash Speed"
+    default 10000
+
+endmenu
+
+# *** included ***

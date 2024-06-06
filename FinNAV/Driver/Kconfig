@@ -1,0 +1,173 @@
+menuconfig LIBROV_USE_DRIVER
+	bool "Enable FinNAV Peripheral Driver"
+	default n
+if LIBROV_USE_DRIVER
+	config BSP_CONFIG_FILE
+		string "BSP Configuration Header File Name"
+		default "bsp_stm32f407xx.h"
+	
+	menuconfig LIBROV_ENABLE_DRIVER_GPIO
+		bool "Enable GPIO Driver"
+		default y
+		if LIBROV_ENABLE_DRIVER_GPIO
+			config GPIO_DEV_MAX_NUM
+				int "Max number of GPIO Device Object"
+				range 1 16
+				default 2
+		endif #LIBROV_ENABLE_DRIVER_GPIO
+
+	menuconfig LIBROV_ENABLE_DRIVER_UART
+		bool "Enable UART Driver"
+		default y
+		if LIBROV_ENABLE_DRIVER_UART
+			config UART_DEV_MAX_NUM
+				int "Max number of UART Device Object"
+				range 1 20
+				default 2
+			
+			choice UART_DEV_TRANSMIT_MODE
+				prompt "UART Transmit Mode"
+				depends on LIBROV_ENABLE_DRIVER_UART
+				default UART_DEV_TX_USE_POLLING
+		
+				config UART_DEV_TX_USE_POLLING
+					bool "Enable Polling Transmit"
+				config UART_DEV_TX_USE_INT
+					bool "Enable Interrupt Transmit"
+				config UART_DEV_TX_USE_DMA
+					bool "Enable DMA Transmit"
+					depends on LIBROV_ENABLE_DRIVER_DMA
+			endchoice
+		
+			choice UART_DEV_RECEIVE_MODE
+				prompt "UART Receive Mode"
+				depends on LIBROV_ENABLE_DRIVER_UART
+				default UART_DEV_RX_USE_POLLING
+		
+				config UART_DEV_RX_USE_POLLING
+					bool "Enable Polling Receive"
+				config UART_DEV_RX_USE_INT
+					bool "Enable Interrupt Receive"
+				config UART_DEV_RX_USE_DMA
+					bool "Enable DMA Receive"
+					depends on LIBROV_ENABLE_DRIVER_DMA
+			endchoice
+		endif #LIBROV_ENABLE_DRIVER_UART
+
+	menuconfig LIBROV_ENABLE_DRIVER_DMA
+		bool "Enable DMA Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_PWM
+		bool "Enable PWM Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_HWTIM
+		bool "Enable Hardware Timer Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_RTC
+		bool "Enable RTC Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_WDG
+		bool "Enable WatchDog Timer Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_I2C
+		bool "Enable Hardware I2C Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_SPI
+		bool "Enable SPI Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_I2C_SOFT
+		bool "Enable Software I2C Driver"
+		depends on LIBROV_ENABLE_DRIVER_GPIO
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_CAN
+		bool "Enable Lagency CAN Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_CANFD
+		bool "Enable CANFD Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_ADC
+		bool "Enable ADC Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_DAC
+		bool "Enable DAC Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_ONCHIP_FLASH
+		bool "Enable on-chip Flash Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_SDIO
+		bool "Enable SDIO Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_PARALLEL
+		bool "Enable Parallel Interface Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_ETH
+		bool "Enable Ethernet Interface(RMII) Driver"
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_DSP
+		bool "Enable DSP(Digital Signal Processor) Driver"
+		depends on CONFIG_SOC_USE_DSP
+		default n
+
+	menuconfig LIBROV_ENABLE_DRIVER_FPGA
+		bool "Enable Customized FPGA IP Driver"
+		default n
+
+	## RovLink Device Configuration ##
+	menuconfig ROVLINK_DEVICE_DRIVER
+		bool "RovLink Standard Protocol Device Driver"
+		depends on LIBROV_USE_ROVLINK
+		default y
+		if ROVLINK_DEVICE_DRIVER
+			choice
+				prompt "Select LinkCOM device type"
+				default LINKCOM_DEVICE_UART
+			
+				config LINKCOM_DEVICE_UART
+					bool "Use TTL/RS232/RS485"
+				config LINKCOM_DEVICE_CAN
+					bool "Use CAN"
+				config LINKCOM_DEVICE_ETH
+					bool "Use ETH"
+			endchoice
+				
+			config LINKCOM_DEV_NUMBER
+				int "LinkCOM UART Device Number"
+				range 1 20
+				default 2
+			
+			choice
+				prompt "Select PassCOM device type"
+				depends on ROVLINK_ENABLE_PASSBY
+				default PASSCOM_DEVICE_UART
+			
+				config PASSCOM_DEVICE_UART
+					bool "Use TTL/RS232/RS485"
+				config PASSCOM_DEVICE_CAN
+					bool "Use CAN"
+				config PASSCOM_DEVICE_ETH
+					bool "Use ETH"
+			endchoice
+				
+			config PASSCOM_DEV_NUMBER
+				int "PassCOM Device Number"
+				range 1 20
+				depends on ROVLINK_ENABLE_PASSBY
+				default 3
+		endif #ROVLINK_DEVICE_DRIVER
+endif #LIBROV_USE_DRIVER

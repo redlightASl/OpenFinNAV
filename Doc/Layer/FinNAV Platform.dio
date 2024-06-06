@@ -1,0 +1,112 @@
+<mxfile host="65bd71144e">
+    <diagram id="y_HDLAAzTET8dHOHQqD7" name="第 1 页">
+        <mxGraphModel dx="680" dy="576" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="43" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="110" width="650" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="130" width="430" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="350" width="220" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="350" width="170" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="230" width="410" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="FreeRTOS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="380" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="130" width="160" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="GNU Make&lt;br&gt;Kconfig&lt;br&gt;GCC" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Keil MDK&lt;br&gt;ARMCC" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="LiteOS" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="380" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Toolchain" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="130" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="RT-Thread" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="420" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="......" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="420" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="FinNAV Middleware" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="230" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Driver" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="170" y="300" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Sensor" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="300" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Port" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="300" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Thread" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="300" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="BasicCtrl" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="260" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Algorithm" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="260" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="140" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="140" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="OpenOCD&lt;br&gt;GDB" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="400" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="RTOS Support" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="350" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Runtime" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="300" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Display" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="260" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Library Support" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="350" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="HAL" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="380" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="SPL" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="380" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="REG" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="380" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="Thirdparty Libs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="420" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Kconfig&lt;br&gt;Python Utils" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="160" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Application&lt;br&gt;Components" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="165" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="BSP&lt;br&gt;Components" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="165" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

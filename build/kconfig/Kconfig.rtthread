@@ -1,0 +1,10 @@
+menu "FinNAV RT-Thread Configuration"
+depends on FINNAV_RTT_CONFIG
+
+config RT_USING_NANO
+    bool "Use RT-Thread Nano Kernel"
+    default y
+
+osource "$(RTT_DIR)/Kconfig"
+endmenu
+# *** included ***

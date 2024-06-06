@@ -1,0 +1,77 @@
+menu "Runtime Component Configuration"
+
+	config LIBROV_USE_STDIO
+		bool "Use <stdio.h> to handle IO"
+		default n
+	
+	config LIBROV_USE_KPRINT
+		bool "Use rov_kprintf Function"
+		default n
+
+	config LIBROV_USE_TRACE
+		bool "Use Trace Support"
+		default n
+
+	config LIBROV_ENABLE_MEMCTRL
+		bool "Manage memory in FinNAV API"
+		default n
+		help
+			FinNAV use `malloc` and `free` functions in <stdlib.h> to
+			memory heap memory as default.
+			Enable this entry to use INDEPENDENT `malloc` and `free` 
+			in FinNAV, which can be implement by RTOS or LibROV
+
+	config LIBROV_HANDLE_INTERRUPT
+		bool "Handle Interrupt by FinNAV"
+		depends on LIBROV_USE_DRIVER
+		default n
+
+
+		
+choice
+	prompt "Select Console Device"
+	default LIBROV_CONSOLE_UART
+
+	config LIBROV_CONSOLE_UART
+		bool "UART"
+	config LIBROV_CONSOLE_CAN
+		bool "CAN"
+	config LIBROV_CONSOLE_OSD
+		bool "OSD"
+endchoice
+
+config CONSOLE_DEV_NUMBER
+	int "Console UART Device Number"
+	range 0 20
+	depends on LIBROV_CONSOLE_UART
+	default 0
+	
+config CONSOLE_DEV_BAUDRATE
+	int "Console UART Device Baudrate"
+	range 4800 921600
+	depends on LIBROV_CONSOLE_UART
+	default 115200
+
+config DEBUG_UART_SIZE
+	int "Max Size of Debug UART buffer in bytes"
+	depends on LIBROV_CONSOLE_UART
+	default 128
+
+
+
+
+config LIBROV_ENABLE_RLOG
+	bool "Enable rlog Component"
+	default n
+
+config RLOG_MAX_COMMITOR
+	int "Max Number of commitors in all RLOG-List"
+	depends on LIBROV_ENABLE_RLOG
+	default 4
+
+config RLOG_MAX_LENGTH
+	int "Max Data Length(Bytes) of Debug Messages"
+	depends on LIBROV_ENABLE_RLOG
+	default 64
+
+endmenu

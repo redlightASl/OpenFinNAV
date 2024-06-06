@@ -1,0 +1,21 @@
+menu "Thread Component Configuration"
+
+	choice
+		prompt "Select Scheduler Object"
+        default LIBROV_THREAD_NO_SCHEDULE
+
+		config LIBROV_THREAD_MULTITIMER
+			bool "Use Software MultiTimer"
+		config LIBROV_THREAD_COROUTINE
+			bool "Use Co-Routine"
+		config LIBROV_THREAD_RTOS
+			bool "Use RTOS Kernel Scheduler" 
+		config LIBROV_THREAD_NO_SCHEDULE
+			bool "Not Use Scheduler" 
+	endchoice
+
+	config LIBROV_USE_SOFTWARE_TIMER
+		bool "Use Software Timer"
+		depends on !LIBROV_THREAD_NO_SCHEDULE
+		default n
+endmenu

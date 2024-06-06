@@ -1,0 +1,40 @@
+menu "Console and Display(Functional IO) Configuration"
+
+	config LIBROV_ENABLE_OSD
+		bool "Enable OSD Video Controller"
+		default n
+
+	choice
+        prompt "Select an OSD Controller"
+		depends on LIBROV_ENABLE_OSD
+        default QL50
+
+        config QL50
+            bool "Use QL50 OSD Board"
+        config AT7456
+            bool "Use AT7456 OSD Chip"
+        config MAX7456
+            bool "Use MAX7456 OSD Chip"
+    endchoice
+
+	choice
+        prompt "Select OSD Interface device type"
+		depends on LIBROV_ENABLE_OSD
+        default OSD_DEVICE_UART
+
+        config OSD_DEVICE_UART
+            bool "Use UART"
+        config OSD_DEVICE_I2C
+            bool "Use I2C"
+        config OSD_DEVICE_SPI
+            bool "Use SPI"
+    endchoice
+
+    config OSD_DEV_NUMBER
+        int "OSD Device Number"
+        range 1 20
+		depends on LIBROV_ENABLE_OSD
+        default 4
+
+endmenu
+

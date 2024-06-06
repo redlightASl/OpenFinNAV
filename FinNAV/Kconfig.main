@@ -1,0 +1,23 @@
+## Basic Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Base/Kconfig"
+
+## Algorithm Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Algorithm/Kconfig"
+
+## Thread Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Thread/Kconfig"
+
+## Runtime Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Runtime/Kconfig"
+
+## Console Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Display/Kconfig"
+
+## Route Configuration ##
+source "$(FINNAV_LIBROV_DIR)/BasicCtrl/Kconfig"
+
+## Sensor Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Sensor/Kconfig"
+
+## Driver Configuration ##
+source "$(FINNAV_LIBROV_DIR)/Driver/Kconfig"

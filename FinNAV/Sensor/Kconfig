@@ -1,0 +1,378 @@
+menuconfig LIBROV_USE_SENSOR
+	bool "Enable FinNAV Sensor Driver"
+	default n
+if LIBROV_USE_SENSOR
+
+menuconfig LIBROV_SENSOR_IMU
+	bool "IMU Sensor"
+	default n
+if LIBROV_SENSOR_IMU
+	choice
+		prompt "Select Main IMU Sensor"
+		default SENSOR_IMU_MPU6500_MAIN
+
+		config SENSOR_IMU_MPU6500_MAIN
+			bool "Use MPU6500"
+		config SENSOR_IMU_MPU6050_MAIN
+			bool "Use MPU6050"
+		config SENSOR_IMU_QMI8658_MAIN
+			bool "Use QMI8658"
+		config SENSOR_IMU_BMI088_MAIN
+			bool "Use BMI088"
+		config SENSOR_IMU_ICM42688_MAIN
+			bool "Use ICM42688"
+	endchoice
+
+	choice
+		prompt "Select Auxiliary IMU Sensor"
+		default SENSOR_IMU_MPU6500_AUX
+
+		config SENSOR_IMU_MPU6500_AUX
+			bool "Use MPU6500"
+		config SENSOR_IMU_MPU6050_AUX
+			bool "Use MPU6050"
+		config SENSOR_IMU_QMI8658_AUX
+			bool "Use QMI8658"
+		config SENSOR_IMU_BMI088_AUX
+			bool "Use BMI088"
+		config SENSOR_IMU_ICM42688_AUX
+			bool "Use ICM42688"
+	endchoice
+
+	choice
+		prompt "Select Main IMU Interface device type"
+		default MAIN_IMU_DEVICE_UART
+
+		config MAIN_IMU_DEVICE_UART
+			bool "Use UART"
+		config MAIN_IMU_DEVICE_I2C
+			bool "Use I2C"
+		config MAIN_IMU_DEVICE_SPI
+			bool "Use SPI"
+		config MAIN_IMU_DEVICE_ADC
+			bool "Use ADC for raw data"
+	endchoice
+
+	choice
+		prompt "Select Auxiliary IMU Interface device type"
+		default AUX_IMU_DEVICE_UART
+
+		config AUX_IMU_DEVICE_UART
+			bool "Use UART"
+		config AUX_IMU_DEVICE_I2C
+			bool "Use I2C"
+		config AUX_IMU_DEVICE_SPI
+			bool "Use SPI"
+		config AUX_IMU_DEVICE_ADC
+			bool "Use ADC for raw data"
+	endchoice
+
+	config MAIN_IMU_DEV_NUMBER
+		int "Main IMU Device Number"
+		range 1 20
+		default 7
+
+	config AUX_IMU_DEV_NUMBER
+		int "Auxiliary IMU Device Number"
+		range 1 20
+		default 8
+endif
+
+menuconfig SENSOR_AHRS
+	bool "AHRS Sensor"
+	default n
+if SENSOR_AHRS
+	choice
+		prompt "Select an AHRS Sensor"
+		default SENSOR_AHRS_WT931
+
+		config SENSOR_AHRS_WT931
+			bool "Use WT931"
+		config SENSOR_AHRS_BNO055
+			bool "Use BNO055"
+		config SENSOR_AHRS_MPU9250
+			bool "Use MPU9250"
+		config SENSOR_AHRS_MTI630
+			bool "Use MTI630"
+	endchoice
+
+	choice
+		prompt "Select AHRS Interface device type"
+		default AHRS_DEVICE_UART
+
+		config AHRS_DEVICE_UART
+			bool "Use UART"
+		config AHRS_DEVICE_I2C
+			bool "Use I2C"
+		config AHRS_DEVICE_SPI
+			bool "Use SPI"
+		config AHRS_DEVICE_CAN
+			bool "Use CAN"
+	endchoice
+
+	config AHRS_DEV_NUMBER
+		int "AHRS Device Number"
+		range 1 20
+		default 9
+endif
+
+menuconfig SENSOR_MAG
+	bool "Magnetic Sensor"
+	default n
+if SENSOR_MAG
+	choice
+		prompt "Select a Magnetic Sensor"
+		default SENSOR_MAG_GY26
+
+		config SENSOR_MAG_GY26
+			bool "Use GY26"
+		config SENSOR_MAG_QMC5883
+			bool "Use QMC5883"
+		config SENSOR_MAG_IST8310
+			bool "Use IST8310"
+	endchoice
+
+	choice
+		prompt "Select magnetic sensor Interface device type"
+		default MAG_DEVICE_UART
+
+		config MAG_DEVICE_UART
+			bool "Use UART"
+		config MAG_DEVICE_I2C
+			bool "Use I2C"
+		config MAG_DEVICE_SPI
+			bool "Use SPI"
+		config MAG_DEVICE_ADC
+			bool "Use ADC for raw data"
+	endchoice
+
+	config MAG_DEV_NUMBER
+		int "magnetic sensor Device Number"
+		range 1 20
+		default 10
+endif
+
+menuconfig SENSOR_CABIN_ENV
+	bool "Environment Sensors in Cabin"
+	default n
+if SENSOR_CABIN_ENV
+	config TEMPERATURE_SENSOR
+		bool "Use Temperature (and Humidity) Sensor"
+		default n
+	if TEMPERATURE_SENSOR
+		choice
+			prompt "Select a Temperature (and Humidity) Sensor"
+			default TEMPERATURE_SENSOR_GY39_TEMPERATURE
+
+			config TEMPERATURE_SENSOR_GY39_TEMPERATURE
+				bool "Use GY39 Board"
+			config TEMPERATURE_SENSOR_SHT20
+				bool "Use SHT20"
+			config TEMPERATURE_SENSOR_SHT30
+				bool "Use SHT30"
+		endchoice
+
+		choice
+			prompt "Select Temperature Sensor Interface Device type"
+			default TEMPERATURE_SENSOR_DEVICE_UART
+
+			config TEMPERATURE_SENSOR_DEVICE_UART
+				bool "Use UART"
+			config TEMPERATURE_SENSOR_DEVICE_I2C
+				bool "Use I2C"
+			config TEMPERATURE_SENSOR_DEVICE_1_WIRE
+				bool "Use 1-Wire"
+			config TEMPERATURE_SENSOR_DEVICE_SPI
+				bool "Use SPI"
+			config TEMPERATURE_SENSOR_DEVICE_ADC
+				bool "Use ADC for raw data"
+		endchoice
+
+		config TEMPERATURE_DEV_NUMBER
+			int "Temperature Device Number"
+			range 1 20
+			default 5
+	endif
+
+	config BAROMETERS_SENSOR
+		bool "Use Barometers Sensor"
+		default n
+	if BAROMETERS_SENSOR
+		choice
+			prompt "Select a Barometers Sensor"
+			default BAROMETERS_SENSOR_GY39_BAROMETER
+	
+			config BAROMETERS_SENSOR_GY39_BAROMETER
+				bool "Use GY39 Board"
+			config BAROMETERS_SENSOR_BMP280
+				bool "Use BMP280"
+		endchoice
+	
+		choice
+			prompt "Select Barometers Sensor Interface Device type"
+			default BAROMETERS_SENSOR_DEVICE_UART
+	
+			config BAROMETERS_SENSOR_DEVICE_UART
+				bool "Use UART"
+			config BAROMETERS_SENSOR_DEVICE_I2C
+				bool "Use I2C"
+			config BAROMETERS_SENSOR_DEVICE_SPI
+				bool "Use SPI"
+			config BAROMETERS_SENSOR_DEVICE_ADC
+				bool "Use ADC for raw data"
+		endchoice
+	
+		config BAROMETERS_DEV_NUMBER
+			int "Barometers Device Number"
+			range 1 20
+			default 6
+	endif
+
+	config ILLUMINATION_SENSOR
+		bool "Use Illumination Sensor"
+		default n
+	if ILLUMINATION_SENSOR
+		choice
+			prompt "Select an Illumination Sensor"
+			default ILLUMINATION_SENSOR_GY39_ILLUMINATION
+	
+			config ILLUMINATION_SENSOR_GY39_ILLUMINATION
+				bool "Use GY39 Board"
+			config ILLUMINATION_SENSOR_TEMT6000
+				bool "Use TEMT6000"
+			config ILLUMINATION_SENSOR_MAX44009
+				bool "Use MAX44009"
+		endchoice
+	
+		choice
+			prompt "Select Illumination Sensor Interface Device type"
+			default ILLUMINATION_SENSOR_DEVICE_UART
+	
+			config ILLUMINATION_SENSOR_DEVICE_UART
+				bool "Use UART"
+			config ILLUMINATION_SENSOR_DEVICE_I2C
+				bool "Use I2C"
+			config ILLUMINATION_SENSOR_DEVICE_SPI
+				bool "Use SPI"
+			config ILLUMINATION_SENSOR_DEVICE_ADC
+				bool "Use ADC for raw data"
+		endchoice
+	
+		config ILLUMINATION_DEV_NUMBER
+			int "Illumination Device Number"
+			range 1 20
+			default 7
+	endif
+
+	config GY39_SENSOR_BOARD
+		bool "Use GY39 Sensor Board"
+		depends on ILLUMINATION_SENSOR_GY39_ILLUMINATION
+		depends on BAROMETERS_SENSOR_GY39_BAROMETER
+		depends on TEMPERATURE_SENSOR_GY39_TEMPERATURE
+endif
+
+menuconfig SENSOR_DEPTH
+	bool "Water Depth Sensor"
+	default n
+if SENSOR_DEPTH
+	choice
+		prompt "Select a Water Depth Sensor"
+		default SENSOR_DEPTH_MS5837
+
+		config SENSOR_DEPTH_MS5837
+			bool "Use MS5837 MEMS"
+		config SENSOR_DEPTH_MS5837_SENSOR_BOARD
+			bool "Use MS5837 Decoder Board"
+	endchoice
+
+	choice
+		prompt "Select water depth sensor Interface device type"
+		default WATER_DEPTH_DEVICE_UART
+
+		config WATER_DEPTH_DEVICE_UART
+			bool "Use UART"
+		config WATER_DEPTH_DEVICE_I2C
+			bool "Use I2C"
+		config WATER_DEPTH_DEVICE_SPI
+			bool "Use SPI"
+		config WATER_DEPTH_DEVICE_ADC
+			bool "Use ADC for raw data"
+	endchoice
+
+	config WATER_DEPTH_DEV_NUMBER
+		int "water depth sensor Device Number"
+		range 1 20
+		default 11
+endif
+
+menuconfig SENSOR_SALINITY
+	bool "Water Salinity Sensor"
+	default n
+if SENSOR_SALINITY
+	choice
+		prompt "Select a Water Salinity Sensor"
+		default SENSOR_SALINITY_ResDet
+
+		config SENSOR_SALINITY_ResDet
+			bool "Use Resistance to measure"
+		config SENSOR_SALINITY_YD301
+			bool "Use YD301"
+	endchoice
+	
+	choice
+		prompt "Select salinity sensor Interface device type"
+		default SALINITY_DEVICE_UART
+
+		config SALINITY_DEVICE_UART
+			bool "Use UART"
+		config SALINITY_DEVICE_I2C
+			bool "Use I2C"
+		config SALINITY_DEVICE_CAN
+			bool "Use CAN"
+		config SALINITY_DEVICE_ADC
+			bool "Use ADC for raw data"
+	endchoice
+	
+	config SALINITY_DEV_NUMBER
+		int "water salinity sensor Device Number"
+		range 1 20
+		default 12
+endif
+
+menuconfig SENSOR_SONAR
+	bool "Sonar Devices and Sensors"
+	default n
+if SENSOR_SONAR
+	choice
+		prompt "Select a Sonar Device or Sensor"
+		default SENSOR_SONAR_GP30
+
+		config SENSOR_SONAR_GP30
+			bool "Use GP30 Sonar"
+		config SENSOR_SONAR_P360
+			bool "Use P360 Sonar"
+	endchoice
+
+	choice
+		prompt "Select Sonar Interface device type"
+		default SONAR_DEVICE_UART
+
+		config SONAR_DEVICE_UART
+			bool "Use UART"
+		config SONAR_DEVICE_I2C
+			bool "Use I2C"
+		config SONAR_DEVICE_CAN
+			bool "Use CAN"
+		config SONAR_DEVICE_PARALLEL
+			bool "Use parallel interface"
+		config SONAR_DEVICE_ADC
+			bool "Use ADC for raw data"
+	endchoice
+
+	config SONAR_DEV_NUMBER
+		int "sonar sensor Device Number"
+		range 1 20
+		default 13
+endif
+
+endif

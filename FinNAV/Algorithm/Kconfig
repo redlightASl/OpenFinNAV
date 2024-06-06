@@ -1,0 +1,249 @@
+menu "Algorithm Configuration"
+
+## Basic Algorithm Sets ##
+config LIBROV_ENABLE_BAS
+	bool "Enable Basic Algorithm API"
+	default y
+
+config LIBROV_ENABLE_VEC_2
+	bool "Enable 2D-Vector API"
+	depends on LIBROV_ENABLE_BAS
+	default n
+
+config LIBROV_ENABLE_VEC_3
+	bool "Enable 3D-Vector API"
+	depends on LIBROV_ENABLE_BAS
+	default n
+
+## MatROV Lib ##
+menuconfig LIBROV_ENABLE_MATROV
+	bool "Enable MatROV Library"
+	depends on LIBROV_ENABLE_BAS
+	default n
+	help
+		MatROV is an embedded Matrix Algorithm Library, part of FinNAV
+
+config MATROV_ENABLE_POINT
+	bool "Enable Point Operations API"
+	depends on LIBROV_ENABLE_MATROV
+	default n
+
+config MATROV_ENABLE_VECTOR
+	bool "Enable Vector Operations API"
+	depends on LIBROV_ENABLE_MATROV
+	default n
+
+config MATROV_ENABLE_MATRIX
+	bool "Enable Matrix Operations API"
+	depends on LIBROV_ENABLE_MATROV
+	default n
+
+config MATROV_STATIC_MEM
+	bool "Enable Static Memory Management for Matrix API"
+	depends on LIBROV_ENABLE_MATROV
+	default n
+
+## Complex Calculation ##
+config LIBROV_ENABLE_COMPLEX
+	bool "Enable Complex Calculation API"
+	depends on LIBROV_ENABLE_BAS
+	default n
+
+## Quaternion ##
+config LIBROV_ENABLE_QUATERNION
+	bool "Enable Quaternion Calculation API"
+	depends on LIBROV_ENABLE_BAS
+	default n
+
+## Deadreckon ##
+config LIBROV_ENABLE_DEADRECKON
+	bool "Enable Deadreckon API"
+	default n
+
+## Integration ##
+config LIBROV_ENABLE_INTEGRATION
+	bool "Enable Integration API"
+	default n
+
+## Encoder/Decoder ##
+config LIBROV_ENABLE_SUMCHECK
+	bool "Enable Sum-Check Encoder/Decoder"
+	default n
+
+choice
+	prompt "Enable CRC8 Encoder/Decoder"
+	default LIBROV_DISABLE_CRC8
+
+	config LIBROV_DISABLE_CRC8
+		bool "Disable Hardware CRC8"
+	config LIBROV_ENABLE_CRC8_SOFTWARE
+		bool "Enable Software CRC8"
+	config LIBROV_ENABLE_CRC8_HARDWARE
+		bool "Enable Hardware CRC8"
+endchoice
+
+config LIBROV_ENABLE_PARITY
+	bool "Enable Parity-Check Encoder/Decoder"
+	default n
+
+config LIBROV_ENABLE_ODD
+	bool "Enable Odd-Check Encoder/Decoder"
+	default n
+
+## PID ##
+menuconfig LIBROV_ENABLE_PID
+	bool "Enable PID Algorithm"
+	default n
+
+if LIBROV_ENABLE_PID
+config PID_IN_PD_MODE
+	bool "Enable PD Controller"
+	default y
+	
+config ENABLE_INCRETOR
+	bool "Enable Incretor-Mode PID"
+	default n
+	
+config PID_EXTENSION_ORBIT
+	bool "Enable Orbit Mode Remap Extension for PID"
+	default n
+	
+config PID_EXTENSION_LPF
+	bool "Enable Low-Pass-Filter Extension for PID"
+	default n
+
+config FIXED_PID_PARAMETER
+	bool "fixed Kp, Ki, Kd Initial parameters"
+	default n
+
+comment "all follow parameters are multiplied by 1000 as result"
+	depends on FIXED_PID_PARAMETER
+
+config PID_Kp
+	int "Orbit Kp parameter"
+	depends on FIXED_PID_PARAMETER
+	default -1472
+
+config PID_Ki
+	int "Orbit Ki parameter"
+	depends on FIXED_PID_PARAMETER
+	default -500
+
+config PID_Kd
+	int "Orbit Kd parameter"
+	depends on FIXED_PID_PARAMETER
+	default -300
+
+config PID_FF
+	int "FeedForward parameter"
+	depends on FIXED_PID_PARAMETER
+	default 1000
+
+config PID_ERROR_MIN
+	int "Error Limit Bottom Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default -1000
+
+config PID_ERROR_MAX
+	int "Error Limit Top Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default 1000
+
+config PID_INT_SEPERATION
+	int "Integral Seperation parameter"
+	depends on FIXED_PID_PARAMETER
+	default -1472
+
+config PID_INT_DECAY
+	int "Integral Decay parameter"
+	depends on FIXED_PID_PARAMETER
+	default 1000
+
+config PID_INT_MIN
+	int "Integral Limit Bottom Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default -3000
+
+config PID_INT_MAX
+	int "Integral Limit Top Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default 3000
+
+config PID_DIFF_MIN
+	int "Difference Limit Bottom Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default -500
+
+config PID_DIFF_MAX
+	int "Difference Limit Top Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default 500
+
+config PID_OUTPUT_MIN
+	int "Output Limit Bottom Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default -5000
+
+config PID_OUTPUT_MAX
+	int "Output Limit Top Value parameter"
+	depends on FIXED_PID_PARAMETER
+	default -5000
+endif
+
+## LADRC Control ##
+config LIBROV_ENABLE_LADRC
+	bool "Enable Linear ADRC Algorithm"
+	default n
+
+## LQR Control ##
+config LIBROV_ENABLE_LQR
+	bool "Enable LQR Algorithm"
+	default n
+
+## Filters ##
+config LIBROV_ENABLE_LPF
+	bool "Enable First-order Low-Pass Filter Algorithm"
+	default n
+
+config LIBROV_ENABLE_SMF
+	bool "Enable Sliding Mean Filter Algorithm"
+	default n
+
+config MEANFILTER_SIZE
+	int "Sliding Mean Filter Box-size parameter"
+	depends on LIBROV_ENABLE_SMF
+	default 10
+
+config LIBROV_ENABLE_CF
+	bool "Enable Complementary Filter Algorithm"
+	default n
+
+## Kalman Filter ##
+config LIBROV_ENABLE_KALMAN_FILTER
+	bool "Use Kalman Filter Algorithm"
+	default n
+
+config LIBROV_KALMAN_LINEAR
+	bool "Enable One-Order Kalman Filter"
+	depends on LIBROV_ENABLE_KALMAN_FILTER
+	default n
+
+config LIBROV_KALMAN_MATRIX
+	bool "Enable Higher-Order Kalman Filter"
+	depends on LIBROV_ENABLE_KALMAN_FILTER
+	default n
+
+config LIBROV_KALMAN_EKF
+	bool "Enable Extented Kalman Filter"
+	depends on LIBROV_ENABLE_KALMAN_FILTER
+	default n
+
+## Miscellaneous ##
+menuconfig FIXED_MISC_PARAMETER
+	bool "fixed Misc-Algorithm parameters"
+	default n
+if FIXED_MISC_PARAMETER
+comment "TODO"
+endif
+
+endmenu

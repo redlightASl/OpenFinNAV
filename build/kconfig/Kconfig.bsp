@@ -1,0 +1,107 @@
+menu "FinNAV BSP Configuration"
+
+choice
+	prompt "Select target SoC family"
+	default CONFIG_TARGET_SOC_FAMILY_STM32F4
+
+	config CONFIG_TARGET_SOC_FAMILY_STM32F4
+		bool "STM32F4"
+	config CONFIG_TARGET_SOC_FAMILY_STM32H7
+		bool "STM32H7"
+	config CONFIG_TARGET_SOC_FAMILY_STM32G4
+		bool "STM32G4"
+endchoice
+
+choice
+	prompt "Select target Peripheral Library Standard"
+	default CONFIG_TARGET_HAL_HAL
+	help
+		Peripheral Library Target, ensure selecting a supported Lib according to SoC
+
+	config CONFIG_TARGET_HAL_HAL
+		bool "HAL"
+	config CONFIG_TARGET_HAL_STDPERIPH
+		bool "STDPERIPH"
+	config CONFIG_TARGET_HAL_REGISTER
+		bool "REGISTER"
+endchoice
+
+config CONFIG_TARGET_SOC
+    string "Select target SoC Chip"
+    default "STM32F407xx"
+    help
+        SoC Target, ensure selecting a supported SoC
+
+config CONFIG_TARGET_BSP
+    string "Select target Borad Support Package (BSP) name"
+    default "stm32f407_lite"
+    help
+        BSP Target, ensure selecting an existing BSP
+
+config CONFIG_SOC_USE_FPU
+    bool "Use SoC with FPU"
+    default y
+
+config CONFIG_SOC_USE_DSP
+    bool "Use SoC with DSP"
+    default n
+
+config CONFIG_SOC_USE_MPU
+    bool "Use SoC with MPU"
+    default n
+
+config CONFIG_SOC_USE_CACHE
+	bool "Use Cache on Chip"
+	default n
+
+config CONFIG_SOC_USE_ICACHE
+	bool "Use Instruction Cache"
+	default n
+    depends on CONFIG_SOC_USE_CACHE
+
+config CONFIG_SOC_USE_DCACHE
+	bool "Use Data Cache"
+	default n
+    depends on CONFIG_SOC_USE_CACHE
+
+config CONFIG_SOC_MAIN_OSC_VALUE
+    int "Main external oscillator frequency(Hz)"
+    default 25000000
+    range -1 50000000
+    help
+        High Speed External Oscillator frequency, default 25MHz
+
+config CONFIG_SOC_INNER_OSC_VALUE
+    int "Internal RC oscillator frequency(Hz)"
+    default 16000000
+    range -1 50000000
+    help
+        High Speed Internal RC oscillator frequency, default 16MHz
+
+config CONFIG_BSP_USE_USB_OTG_FS
+    bool "Use USB OTG FS"
+    default n
+
+config CONFIG_BSP_USE_USB_OTG_HS
+    bool "Use USB OTG HS"
+    default n
+
+config CONFIG_BSP_USE_FATFS
+    bool "Use FATFS Library"
+    default n
+
+config CONFIG_BSP_USE_LWIP
+    bool "Use lwIP Library"
+    default n
+
+config CONFIG_BSP_USE_MBEDTLS
+    bool "Use mbedTLS Library"
+    default n
+
+config CONFIG_BSP_USE_OPENAMP
+    bool "Use OpenAMP Library"
+    default n
+
+endmenu
+
+# *** included ***

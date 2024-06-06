@@ -1,0 +1,250 @@
+#
+# Automatically generated file; DO NOT EDIT.
+CONFIG_TARGET_APP="f407_rtos"
+
+#
+# FinNAV Toolchain Configuration
+#
+CONFIG_COMPILER_GCC=y
+# CONFIG_COMPILER_ARMCC is not set
+CONFIG_BUILTIN_TOOLCHAIN=y
+# CONFIG_SYSTEM_TOOLCHAIN is not set
+CONFIG_COMPILE_DEBUG=y
+CONFIG_COMPILE_OPT="-O3"
+CONFIG_COMPILE_ONE_SECTION_PER_FUNC=y
+CONFIG_OPENOCD_PATH=""
+CONFIG_DEBUGGER_INTERFACE="cmsis-dap"
+# CONFIG_OPENOCD_FLASH_HEX is not set
+CONFIG_OPENOCD_FLASH_ELF=y
+# CONFIG_OPENOCD_FLASH_BIN is not set
+CONFIG_OPENOCD_FLASH_SPEED=10000
+# end of FinNAV Toolchain Configuration
+
+#
+# FinNAV BSP Configuration
+#
+CONFIG_TARGET_SOC_FAMILY_STM32F4=y
+# CONFIG_TARGET_SOC_FAMILY_STM32H7 is not set
+# CONFIG_TARGET_SOC_FAMILY_STM32G4 is not set
+CONFIG_TARGET_HAL_HAL=y
+# CONFIG_TARGET_HAL_STDPERIPH is not set
+# CONFIG_TARGET_HAL_REGISTER is not set
+CONFIG_TARGET_SOC="STM32F407xx"
+CONFIG_TARGET_BSP="stm32f407_lite"
+CONFIG_SOC_USE_FPU=y
+CONFIG_SOC_USE_DSP=y
+# CONFIG_SOC_USE_MPU is not set
+# CONFIG_SOC_USE_CACHE is not set
+CONFIG_SOC_MAIN_OSC_VALUE=-1
+# CONFIG_BSP_USE_USB_OTG_FS is not set
+# CONFIG_BSP_USE_USB_OTG_HS is not set
+# CONFIG_BSP_USE_FATFS is not set
+# CONFIG_BSP_USE_LWIP is not set
+# CONFIG_BSP_USE_MBEDTLS is not set
+# CONFIG_BSP_USE_OPENAMP is not set
+# end of FinNAV BSP Configuration
+
+#
+# FinNAV RTOS Kernel Configuration
+#
+# CONFIG_TARGET_RTOS_BAREMETAL is not set
+CONFIG_TARGET_RTOS_FREERTOS=y
+# CONFIG_TARGET_RTOS_LITEOS is not set
+# CONFIG_TARGET_RTOS_RTT is not set
+# CONFIG_CMSIS_RTOS_VERSION_NO is not set
+CONFIG_CMSIS_RTOS_VERSION_V1=y
+# CONFIG_CMSIS_RTOS_VERSION_V2 is not set
+CONFIG_RTOS_MEM_POOL_TYPE="heap_4"
+# end of FinNAV RTOS Kernel Configuration
+
+#
+# FinNAV Memory&Flash Configuration
+#
+# CONFIG_EXSBOOT is not set
+# CONFIG_RAM_BASED is not set
+# CONFIG_CUSTOM_DEFAULTS_EXTENDED is not set
+CONFIG_MCU_FLASH_SIZE=128
+CONFIG_BOOTLOADER_BASE_ADDRESS=0x08000000
+CONFIG_MULTIBOOT_MEM_ADDR=0x08100000
+# end of FinNAV Memory&Flash Configuration
+
+CONFIG_USE_FINNAV=y
+
+#
+# Basic Components Configuration
+#
+# LIBROV_ASSERT is not set
+# LIBROV_STDBOOL is not set
+# PowerSide is not set
+CtrlSide=y
+# CommSide is not set
+# MainSide is not set
+# FiskinBoard is not set
+# end of Basic Components Configuration
+
+#
+# Thruster Configuration
+#
+# AXIS_2_HORIZENTAL is not set
+AXIS_4_HORIZENTAL=y
+# AXIS_1_VERTICAL is not set
+AXIS_2_VERTICAL=y
+# AXIS_3_VERTICAL is not set
+# AXIS_4_VERTICAL is not set
+PWM_MIDDLE_POSITION=1500
+# end of Thruster Configuration
+
+#
+# Algorithm Configuration
+#
+LIBROV_ENABLE_BAS=y
+# LIBROV_ENABLE_VEC_2 is not set
+# LIBROV_ENABLE_VEC_3 is not set
+# LIBROV_ENABLE_MATROV is not set
+# LIBROV_ENABLE_PID is not set
+# LIBROV_ENABLE_LADRC is not set
+# LIBROV_ENABLE_LPF is not set
+# LIBROV_ENABLE_SMF is not set
+# LIBROV_ENABLE_CF is not set
+# LIBROV_ENABLE_KALMAN_FILTER is not set
+# LIBROV_KALMAN_EKF is not set
+# FIXED_MISC_PARAMETER is not set
+# end of Algorithm Configuration
+
+#
+# Console and Display(Functional IO) Configuration
+#
+# ENABLE_OSD is not set
+# end of Console and Display(Functional IO) Configuration
+
+#
+# Route Configuration
+#
+
+#
+# Protocol Configuration
+#
+USE_ROVLINK=y
+# USE_LAGENCY is not set
+# USE_USER_PROTOCOL is not set
+# DATA_IDENTIFY is not set
+# ENABLE_ROV_OTA is not set
+# ENABLE_PASSBY is not set
+# end of Protocol Configuration
+# end of Route Configuration
+
+#
+# Sensor Configuration
+#
+# SENSOR_AHRS is not set
+# SENSOR_IMU is not set
+# SENSOR_MAG is not set
+# SENSOR_CABIN_ENV is not set
+# SENSOR_DEPTH is not set
+# SENSOR_SALINITY is not set
+# SENSOR_SONAR is not set
+# end of Sensor Configuration
+
+#
+# Peripheral Driver Configuration
+#
+# ENABLE_ROV_DRIVER is not set
+ROVLINK_DEVICE_DRIVER=y
+LINKCOM_DEVICE_UART=y
+# LINKCOM_DEVICE_RS485 is not set
+# LINKCOM_DEVICE_RS422 is not set
+# LINKCOM_DEVICE_CAN is not set
+# LINKCOM_DEVICE_ETH is not set
+LINKCOM_DEV_NUMBER=2
+# end of Peripheral Driver Configuration
+
+FINNAV_FREERTOS_CONFIG=y
+
+#
+# FinNAV FreeRTOS Configuration
+#
+
+#
+# Basic Configuration
+#
+configENABLE_FPU=y
+# configENABLE_MPU is not set
+configTICK_RATE_HZ=1000
+configUSE_PREEMPTION=y
+configUSE_TIME_SLICING=y
+# configUSE_PORT_OPTIMISED_TASK_SELECTION is not set
+configMINIMAL_STACK_SIZE=128
+configMAX_TASK_NAME_LEN=16
+configIDLE_SHOULD_YIELD=y
+# configHEAP_CLEAR_MEMORY_ON_FREE is not set
+# end of Basic Configuration
+
+#
+# Kernel Timer Management
+#
+# configUSE_TIMERS is not set
+# end of Kernel Timer Management
+
+#
+# Kernel Memory Management
+#
+# configSUPPORT_STATIC_ALLOCATION is not set
+configSUPPORT_DYNAMIC_ALLOCATION=y
+configTOTAL_HEAP_SIZE=15360
+# configAPPLICATION_ALLOCATED_HEAP is not set
+# configSTACK_ALLOCATION_FROM_SEPARATE_HEAP is not set
+# configENABLE_HEAP_PROTECTOR is not set
+# end of Kernel Memory Management
+
+#
+# Kernel IPC and API Management
+#
+# configUSE_TASK_NOTIFICATIONS is not set
+# configUSE_MUTEXES is not set
+# configUSE_COUNTING_SEMAPHORES is not set
+# configUSE_QUEUE_SETS is not set
+# configUSE_APPLICATION_TASK_TAG is not set
+# INCLUDE_vTaskPrioritySet is not set
+# INCLUDE_uxTaskPriorityGet is not set
+# INCLUDE_vTaskDelete is not set
+INCLUDE_vTaskSuspend=y
+INCLUDE_vTaskDelay=y
+INCLUDE_vTaskDelayUntil=y
+# INCLUDE_xTaskGetSchedulerState is not set
+# INCLUDE_xTaskGetCurrentTaskHandle is not set
+# INCLUDE_xTaskGetIdleTaskHandle is not set
+# INCLUDE_xEventGroupSetBitFromISR is not set
+# INCLUDE_xTimerPendFunctionCall is not set
+# INCLUDE_xTaskAbortDelay is not set
+# INCLUDE_xTaskResumeFromISR is not set
+# INCLUDE_vTaskCleanUpResources is not set
+# INCLUDE_xQueueGetMutexHolder is not set
+# INCLUDE_xTaskGetHandle is not set
+# INCLUDE_uxTaskGetStackHighWaterMark is not set
+# INCLUDE_eTaskGetState is not set
+# INCLUDE_xSemaphoreGetMutexHolder is not set
+# end of Kernel IPC and API Management
+
+#
+# Hook and Callback Functions
+#
+# configUSE_IDLE_HOOK is not set
+# configUSE_TICK_HOOK is not set
+# configUSE_MALLOC_FAILED_HOOK is not set
+# configUSE_DAEMON_TASK_STARTUP_HOOK is not set
+# configUSE_PASSIVE_IDLE_HOOK is not set
+# configUSE_SB_COMPLETED_CALLBACK is not set
+# end of Hook and Callback Functions
+
+#
+# SMP Funtions
+#
+# ENABLE_FREERTOS_SMP is not set
+# end of SMP Funtions
+
+#
+# Misc Funtions
+#
+# configUSE_CO_ROUTINES is not set
+# end of Misc Funtions
+# end of FinNAV FreeRTOS Configuration

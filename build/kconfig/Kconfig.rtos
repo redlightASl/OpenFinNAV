@@ -1,0 +1,50 @@
+menu "FinNAV RTOS Kernel Configuration"
+
+choice
+    prompt "Select RTOS Kernel"
+    default CONFIG_TARGET_RTOS_FREERTOS
+
+    config CONFIG_TARGET_RTOS_BAREMETAL
+        bool "Not Use RTOS"
+    config CONFIG_TARGET_RTOS_FREERTOS
+        bool "Use FreeRTOS"
+    config CONFIG_TARGET_RTOS_RTT
+        bool "Use RT-Thread"
+    config CONFIG_TARGET_RTOS_LITEOS
+        bool "Use LiteOS"
+endchoice
+
+choice
+    prompt "Select CMSIS-RTOS"
+    default CONFIG_CMSIS_RTOS_VERSION_V2
+
+    config CONFIG_CMSIS_RTOS_VERSION_NO
+        bool "Not Use CMSIS-RTOS"
+    config CONFIG_CMSIS_RTOS_VERSION_V1
+        bool "Use CMSIS-RTOS V1"
+    config CONFIG_CMSIS_RTOS_VERSION_V2
+        bool "Use CMSIS-RTOS V2"
+endchoice
+
+config CONFIG_RTOS_MEM_POOL_TYPE
+    string "Determine memory pool type"
+    default "heap_4"
+    help
+        This option will determine memory pool type of RTOS.
+
+config FINNAV_FREERTOS_CONFIG
+    bool "Configure FreeRTOS by FinNAV"
+    default n
+    depends on CONFIG_TARGET_RTOS_FREERTOS
+    help
+        This option will configure FreeRTOS in FinNAV menuconfig system.
+
+config FINNAV_RTT_CONFIG
+    bool "Configure RT-Thread by FinNAV"
+    default n
+    depends on CONFIG_TARGET_RTOS_RTT
+    help
+        This option will configure RT-Thread in FinNAV menuconfig system.
+
+endmenu
+# *** included ***

@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FinNAV Debug",
+            "cwd": "${workspaceRoot}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "executable":"${workspaceRoot}/build/out/finnav.elf",
+            "servertype": "openocd",
+            "configFiles": [
+                "${workspaceRoot}/Toolchain/openocd/share/openocd/scripts/interface/cmsis-dap.cfg",
+                "${workspaceRoot}/Toolchain/openocd/share/openocd/scripts/target/stm32f4x.cfg"
+            ],
+            "searchDir": [],
+            "svdFile": "./build/target/svd/STM32F40x.svd"
+        }
+    ]
+}

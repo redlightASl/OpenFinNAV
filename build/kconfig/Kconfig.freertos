@@ -1,0 +1,311 @@
+menu "FinNAV FreeRTOS Configuration"
+depends on FINNAV_FREERTOS_CONFIG
+
+menu "Basic Configuration"
+    config configENABLE_FPU
+        bool "Enable FreeRTOS Use FPU"
+        default n
+    
+    config configENABLE_MPU
+        bool "Enable FreeRTOS Use MPU"
+        default n
+
+    config configTICK_RATE_HZ
+        int "FreeRTOS systick rate(Hz)"
+        default 1000
+    
+    config configUSE_PREEMPTION
+        bool "Enable pre-emptive scheduling"
+        default y
+
+    config configUSE_TIME_SLICING
+        bool "Enable time slice based schedule"
+        default y
+
+    config configUSE_PORT_OPTIMISED_TASK_SELECTION
+        bool "Use scheduling algorithm optimised for ISA"
+        default n
+
+    config configMINIMAL_STACK_SIZE
+        int "stack size used by Idle task(in Words)"
+        default 128
+
+    config configMAX_TASK_NAME_LEN
+        int "max length of task name"
+        default 16
+
+    config configIDLE_SHOULD_YIELD
+        bool "have the Idle task yield to run other Idle-priority task"
+        default y
+    
+    config configHEAP_CLEAR_MEMORY_ON_FREE
+        bool "Heap memory Garbage Collection"
+        default n
+endmenu
+
+menu "Kernel Timer Management"
+    config configUSE_TIMERS
+        bool "Enable Software Timer"
+        default n
+    
+    config configTIMER_QUEUE_LENGTH
+        int "length of the queue for sending commands to the timer task"
+        default 10
+        depends on configUSE_TIMERS
+endmenu
+
+menu "Kernel Memory Management"
+    config configSUPPORT_STATIC_ALLOCATION
+        bool "Enable Statically Allocated Memory creating Kernel objects"
+        default y
+
+    config configKERNEL_PROVIDED_STATIC_MEMORY
+        bool "Enable Kernel objects created using statically allocated memory"
+        default y
+        depends on configSUPPORT_STATIC_ALLOCATION
+        help
+            Defines the kernel provided implementation of vApplicationGetIdleTaskMemory() and vApplicationGetTimerTaskMemory()
+            to provide the memory that is used by the Idle task and Timer task respectively.
+            The application can provide it's own implementation of
+            vApplicationGetIdleTaskMemory() and vApplicationGetTimerTaskMemory() by
+            setting configKERNEL_PROVIDED_STATIC_MEMORY to 0 or leaving it undefined
+
+    config configSUPPORT_DYNAMIC_ALLOCATION
+        bool "Enable Dynamically Allocated Memory creating Kernel objects"
+        default y
+
+    config configTOTAL_HEAP_SIZE
+        int "total size of the FreeRTOS heap"
+        default 15360
+
+    config configAPPLICATION_ALLOCATED_HEAP
+        bool "have the application allocate the array used as the FreeRTOS heap"
+        default n
+
+    config configSTACK_ALLOCATION_FROM_SEPARATE_HEAP
+        bool "have task stacks allocated from somewhere other than the FreeRTOS heap"
+        default n
+
+    config configENABLE_HEAP_PROTECTOR
+        bool "enable bounds checking and obfuscation to internal heap block pointers in heap_4.c and heap_5.c"
+        default n
+endmenu
+
+menu "Kernel IPC and API Management"
+    config configUSE_TASK_NOTIFICATIONS
+        bool "Enable Notifications"
+        default n
+
+    config configUSE_MUTEXES
+        bool "Enable Mutex"
+        default n
+
+    config configUSE_RECURSIVE_MUTEXES
+        bool "Enable Recursive Mutex"
+        default n
+        depends on configUSE_MUTEXES
+
+    config configUSE_COUNTING_SEMAPHORES
+        bool "Enable Semaphores"
+        default y
+
+    config configUSE_QUEUE_SETS
+        bool "Enable Queue Sets"
+        default n
+
+    config configUSE_APPLICATION_TASK_TAG
+        bool "Enable Application Task Tags"
+        default n
+
+    config INCLUDE_vTaskPrioritySet
+        bool "Enable FreeRTOS APIs: vTaskPrioritySet"
+        default y
+
+    config INCLUDE_uxTaskPriorityGet
+        bool "Enable FreeRTOS APIs: uxTaskPriorityGet"
+        default y
+    
+    config INCLUDE_vTaskDelete
+        bool "Enable FreeRTOS APIs: vTaskDelete"
+        default y
+
+    config INCLUDE_vTaskSuspend
+        bool "Enable FreeRTOS APIs: vTaskSuspend"
+        default y
+
+    config INCLUDE_vTaskDelay
+        bool "Enable FreeRTOS APIs: vTaskDelay"
+        default y
+
+    config INCLUDE_vTaskDelayUntil
+        bool "Enable FreeRTOS APIs: vTaskDelayUntil"
+        default y
+
+    config INCLUDE_xTaskGetSchedulerState
+        bool "Enable FreeRTOS APIs: xTaskGetSchedulerState"
+        default y
+
+    config INCLUDE_xTaskGetCurrentTaskHandle
+        bool "Enable FreeRTOS APIs: xTaskGetCurrentTaskHandle"
+        default y
+
+    config INCLUDE_xTaskGetIdleTaskHandle
+        bool "Enable FreeRTOS APIs: xTaskGetIdleTaskHandle"
+        default n
+        
+    config INCLUDE_xEventGroupSetBitFromISR
+        bool "Enable FreeRTOS APIs: xEventGroupSetBitFromISR"
+        default n
+
+    config INCLUDE_xTimerPendFunctionCall
+        bool "Enable FreeRTOS APIs: xTimerPendFunctionCall"
+        default n
+
+    config INCLUDE_xTaskAbortDelay
+        bool "Enable FreeRTOS APIs: xTaskAbortDelay"
+        default n
+
+    config INCLUDE_xTaskResumeFromISR
+        bool "Enable FreeRTOS APIs: xTaskResumeFromISR"
+        default y
+
+    config INCLUDE_vTaskCleanUpResources
+        bool "Enable FreeRTOS APIs: vTaskCleanUpResources"
+        default n
+
+    config INCLUDE_xQueueGetMutexHolder
+        bool "Enable FreeRTOS APIs: xQueueGetMutexHolder"
+        default n
+
+    config INCLUDE_xTaskGetHandle
+        bool "Enable FreeRTOS APIs: xTaskGetHandle"
+        default y
+
+    config INCLUDE_uxTaskGetStackHighWaterMark
+        bool "Enable FreeRTOS APIs: uxTaskGetStackHighWaterMark"
+        default y
+    config INCLUDE_eTaskGetState
+        bool "Enable FreeRTOS APIs: eTaskGetState"
+        default n
+
+    config INCLUDE_xSemaphoreGetMutexHolder
+        bool "Enable FreeRTOS APIs: xSemaphoreGetMutexHolder"
+        default y
+endmenu
+
+menu "Hook and Callback Functions"
+    config configUSE_IDLE_HOOK
+        bool "Use Idle Hook"
+        default n
+
+    config configUSE_TICK_HOOK
+        bool "Use Tick Hook"
+        default n
+
+    config configUSE_MALLOC_FAILED_HOOK
+        bool "Use Malloc Failed Hook"
+        default n
+
+    config configUSE_DAEMON_TASK_STARTUP_HOOK
+        bool "Use Daemon Task Startup Hook"
+        default n
+
+    config configUSE_PASSIVE_IDLE_HOOK
+        bool "Use Passive Idle Hook"
+        default n
+        
+    config configUSE_SB_COMPLETED_CALLBACK
+        bool "Use Streamer Buffer Completed Callback"
+        default n
+endmenu
+
+if CONFIG_CMSIS_RTOS_VERSION_V2
+menu "CMSIS-RTOSv2 Flags"
+    config USE_CUSTOM_SYSTICK_HANDLER_IMPLEMENTATION
+        bool "if use custom implemented systick irq handler"
+        default n
+
+    # Functional configs
+    config configUSE_OS2_THREAD_SUSPEND_RESUME
+        bool "Use CMSIS-RTOSv2 APIs: osThreadSuspend and osThreadResume"
+        default n
+        select INCLUDE_vTaskSuspend
+        help
+            You have to select INCLUDE_vTaskSuspend
+    
+    config configUSE_OS2_THREAD_ENUMERATE
+        bool "Use CMSIS-RTOSv2 APIs: osThreadEnumerate"
+        default n
+        select configUSE_TRACE_FACILITY
+        help
+            You have to select configUSE_TRACE_FACILITY
+
+    config configUSE_OS2_EVENTFLAGS_FROM_ISR
+        bool "Use CMSIS-RTOSv2 APIs: osEventFlagsSet and osEventFlagsClear from ISR"
+        default n
+        select INCLUDE_xTimerPendFunctionCall
+        help
+            You have to select INCLUDE_xTimerPendFunctionCall
+
+    config configUSE_OS2_THREAD_FLAGS
+        bool "Use CMSIS-RTOSv2 APIs: osThreadFlagsXXX"
+        default n
+        select configUSE_TASK_NOTIFICATIONS
+        help
+            You have to select configUSE_TASK_NOTIFICATIONS
+
+    config configUSE_OS2_TIMER
+        bool "Use CMSIS-RTOSv2 APIs: osTimerXXX"
+        default n
+        select configUSE_TIMERS
+        help
+            You have to select configUSE_TIMERS
+
+    config configUSE_OS2_MUTEX
+        bool "Use CMSIS-RTOSv2 APIs: osMutexXXX"
+        default n
+        select configUSE_MUTEXES
+        help
+            You have to select configUSE_MUTEXES
+endmenu
+endif
+
+menu "SMP Funtions"
+    config ENABLE_FREERTOS_SMP
+        bool "Enable FreeRTOS Multi-Core(SMP) Funtions"
+        default n
+
+    config configNUMBER_OF_CORES
+        int "Number of CPU Cores"
+        default 1
+        depends on ENABLE_FREERTOS_SMP
+
+    config configRUN_MULTIPLE_PRIORITIES
+        bool "Multi-Priorities Tasks can run on different cores"
+        default n
+        depends on ENABLE_FREERTOS_SMP
+
+    config configUSE_CORE_AFFINITY
+        bool "Enable Core Affinity Feature"
+        default n
+        depends on ENABLE_FREERTOS_SMP
+
+    config configUSE_TASK_PREEMPTION_DISABLE
+        bool "Enable not use preemption for single task"
+        default n
+        depends on ENABLE_FREERTOS_SMP
+endmenu
+
+menu "Misc Funtions"
+    config configUSE_CO_ROUTINES
+        bool "Enable Co-routine"
+        default n
+
+    config configMAX_CO_ROUTINE_PRIORITIES
+        int "Max priorities for Co-routine"
+        default 2
+        depends on configUSE_CO_ROUTINES
+endmenu
+
+endmenu
+# *** included ***

@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "openocd",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "debug"
+            ]
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "build"
+            ]
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "flash"
+            ]
+        },
+        {
+            "label": "flash without makefile",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "Toolchain/openocd/share/openocd/scripts/interface/cmsis-dap.cfg",
+                "-f",
+                "Toolchain/openocd/share/openocd/scripts/target/stm32f4x.cfg",
+                "-c",
+                "init",
+                "-c",
+                "adapter speed 10000",
+                "-c",
+                "reset halt",
+                "-c",
+                "flash write_image erase build/out/finnav.hex",
+                "-c",
+                "reset run",
+                "-c",
+                "shutdown"
+            ]
+        }
+    ]
+}
